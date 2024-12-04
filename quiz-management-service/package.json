@@ -1,0 +1,14 @@
+{
+  "name": "quiz-management-service",
+  "version": "1.0.0",
+  "description": "Service for managing quiz questions and answers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.3.2",
+    "body-parser": "^1.20.2"
+  }
+}

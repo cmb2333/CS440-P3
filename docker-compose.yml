@@ -1,0 +1,55 @@
+version: '3.8'
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - quiz-management-service
+      - user-response-service
+      - quiz-modification-service
+    networks:
+      - quiz-network
+
+  quiz-management-service:
+    build: ./quiz-management-service
+    ports:
+      - "3001:3001"
+    networks:
+      - quiz-network
+    environment:
+      - MONGO_URL=mongodb://quiz-database:27017/QuizDB
+
+  user-response-service:
+    build: ./user-response-service
+    ports:
+      - "3002:3002"
+    networks:
+      - quiz-network
+    environment:
+      - MONGO_URL=mongodb://quiz-database:27017/QuizDB
+
+  quiz-modification-service:
+    build: ./quiz-modification-service
+    ports:
+      - "3003:3003"
+    networks:
+      - quiz-network
+    environment:
+      - MONGO_URL=mongodb://quiz-database:27017/QuizDB
+
+  quiz-database:
+    image: mongo:5
+    container_name: quiz-database
+    ports:
+      - "27017:27017"
+    networks:
+      - quiz-network
+    volumes:
+      - mongo-data:/data/db
+
+networks:
+  quiz-network:
+
+volumes:
+  mongo-data:

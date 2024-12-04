@@ -1,0 +1,14 @@
+{
+  "name": "quiz-modification-service",
+  "version": "1.0.0",
+  "description": "Service for adding, removing, and updating quiz questions",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.3.2",
+    "body-parser": "^1.20.2"
+  }
+}
